@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détails du produit - ShopEasy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <i class="bi bi-shop fs-3 me-2 text-primary"></i>
+          <span class="fw-bold">ShopEasy</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Accueil</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                Catégories
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="categoryDropdown">
+                <!-- Categories will be loaded dynamically from JS -->
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.html">Panier</a>
+            </li>
+          </ul>
+          <form class="d-flex me-3" id="searchForm">
+            <div class="input-group">
+              <input class="form-control" type="search" placeholder="Rechercher..." id="searchInput">
+              <button class="btn btn-outline-primary" type="submit">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </form>
+          <div class="d-flex align-items-center">
+            <a href="cart.html" class="position-relative me-3 text-dark">
+              <i class="bi bi-cart fs-5"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">0</span>
+            </a>
+            <div class="dropdown">
+              <a href="#" class="text-dark" data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle fs-5"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Mon compte</a></li>
+                <li><a class="dropdown-item" href="#">Mes commandes</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Se connecter</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Product Breadcrumb -->
+  <div class="bg-light">
+    <div class="container py-2">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+          <li class="breadcrumb-item" id="categoryBreadcrumb"><a href="#" id="categoryLink">Catégorie</a></li>
+          <li class="breadcrumb-item active" aria-current="page" id="productBreadcrumb">Produit</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Product Detail Section -->
+  <section class="container my-5">
+    <div class="row" id="productDetail">
+      <!-- Product details will be loaded dynamically -->
+    </div>
+  </section>
+
+  <!-- Product Tabs -->
+  <section class="container mb-5">
+    <ul class="nav nav-tabs mb-4" id="productTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="specifications-tab" data-bs-toggle="tab" data-bs-target="#specifications" type="button" role="tab" aria-controls="specifications" aria-selected="false">Spécifications</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Avis</button>
+      </li>
+    </ul>
+    
+    <div class="tab-content p-4 bg-white shadow-sm rounded" id="productTabContent">
+      <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+        <!-- Description will be loaded dynamically -->
+      </div>
+      <div class="tab-pane fade" id="specifications" role="tabpanel" aria-labelledby="specifications-tab">
+        <!-- Specifications will be loaded dynamically -->
+      </div>
+      <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+        <div id="productReviews">
+          <!-- Reviews will be loaded dynamically -->
+        </div>
+        
+        <div class="border-top pt-4 mt-4">
+          <h4 class="mb-3">Laisser un avis</h4>
+          <form id="reviewForm">
+            <div class="mb-3">
+              <label for="reviewerName" class="form-label">Nom</label>
+              <input type="text" class="form-control" id="reviewerName" required>
+            </div>
+            <div class="mb-3">
+              <label for="reviewerEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="reviewerEmail" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Note</label>
+              <div class="rating-input">
+                <i class="bi bi-star fs-4 me-1" data-rating="1"></i>
+                <i class="bi bi-star fs-4 me-1" data-rating="2"></i>
+                <i class="bi bi-star fs-4 me-1" data-rating="3"></i>
+                <i class="bi bi-star fs-4 me-1" data-rating="4"></i>
+                <i class="bi bi-star fs-4" data-rating="5"></i>
+                <input type="hidden" id="ratingValue" value="0" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="reviewContent" class="form-label">Avis</label>
+              <textarea class="form-control" id="reviewContent" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Soumettre l'avis</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products -->
+  <section class="container mb-5">
+    <h2 class="text-center mb-4 section-title">Produits similaires</h2>
+    <div class="row g-4" id="relatedProducts">
+      <!-- Related products will be loaded dynamically -->
+    </div>
+  </section>
+
+  <!-- Recently Viewed -->
+  <section class="container mb-5">
+    <h2 class="text-center mb-4 section-title">Récemment consultés</h2>
+    <div class="row g-4" id="recentlyViewed">
+      <!-- Recently viewed products will be loaded dynamically -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4">ShopEasy</h5>
+          <p class="mb-3">Le meilleur choix pour vos achats en ligne avec des produits de qualité et un service client exceptionnel.</p>
+          <div class="social-links">
+            <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4">Liens rapides</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-white">Accueil</a></li>
+            <li class="mb-2"><a href="#" class="text-white">À propos</a></li>
+            <li class="mb-2"><a href="#" class="text-white">Produits</a></li>
+            <li class="mb-2"><a href="#" class="text-white">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4">Service client</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-white">Mon compte</a></li>
+            <li class="mb-2"><a href="#" class="text-white">Commandes</a></li>
+            <li class="mb-2"><a href="#" class="text-white">Retours & remboursements</a></li>
+            <li class="mb-2"><a href="#" class="text-white">Aide & FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4">Contact</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 Rue du Commerce, Paris</li>
+            <li class="mb-2"><i class="bi bi-telephone me-2"></i> +33 1 23 45 67 89</li>
+            <li class="mb-2"><i class="bi bi-envelope me-2"></i> contact@shopeasy.com</li>
+            <li class="mb-2"><i class="bi bi-clock me-2"></i> Lun-Ven: 9h-18h</li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="my-4">
+      
+      <div class="row align-items-center">
+        <div class="col-md-7 mb-3 mb-md-0">
+          <p class="mb-0">&copy; 2025 ShopEasy. Tous droits réservés.</p>
+        </div>
+        <div class="col-md-5 text-md-end">
+          <a href="#" class="text-white me-3">Conditions d'utilisation</a>
+          <a href="#" class="text-white">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="btn btn-primary rounded-circle shadow-sm">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/product-detail.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
